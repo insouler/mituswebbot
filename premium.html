@@ -381,9 +381,151 @@ footer.footer {
   margin-bottom: 5px;
   font-size: 14px;
 }
+.check {
+  color: #4ade80; /* Verde brillante */
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.xmark {
+  color: #f87171; /* Rojo suave */
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+
+.comparison-table {
+  max-width: 1000px;
+  margin: 4rem auto;
+  text-align: center;
+}
+
+.comparison-table h2 {
+  font-size: 2rem;
+  color: #c3a9ff;
+  margin-bottom: 2rem;
+}
+
+.comparison-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #15152b;
+  color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(163, 120, 255, 0.2);
+}
+
+.comparison-table thead {
+  background: #1d1d36;
+}
+
+.comparison-table th, 
+.comparison-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 14px;
+}
+
+.comparison-table td.check {
+  color: #4ADE80; /* Verde ✔ */
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.comparison-table td.x {
+  color: #EF4444; /* Rojo ✖ */
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.comparison-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.premium-faq {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 20px;
+}
+
+.premium-faq h2 {
+  text-align: center;
+  color: #c3a9ff;
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+}
+
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq {
+  background: #15152b;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(163, 120, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.faq input[type="checkbox"] {
+  display: none;
+}
+
+.faq-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: #1d1d36;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.faq-icon {
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  stroke: #c3a9ff;
+  stroke-width: 2;
+  fill: none;
+  transition: transform 0.3s ease;
+}
+
+.faq input[type="checkbox"]:checked + .faq-label .arrow {
+  transform: rotate(180deg);
+}
+
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  background: #1a1a2e;
+  color: #ccc;
+  font-size: 14.5px;
+  padding: 0 20px;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq input[type="checkbox"]:checked ~ .faq-content {
+  max-height: 200px;
+  padding: 16px 20px;
+}
+ 
+ 
 </style>
 </head>
 <body>
+ 
 
   <header>
     <a href="index.html" class="logo">
@@ -414,34 +556,12 @@ footer.footer {
         <div class="card-header">
             <div class="card-header-title">
                 <img src="https://cdn.discordapp.com/attachments/1407951835465121912/1414841426721636382/MitusBotardo-removebg-preview_1.png?ex=68c10942&is=68bfb7c2&hm=9d64c4401b4c438498fe8c724529e0adf3de9c2444fc5ec6a880a4f0239d0107&" alt="Logo">
-                Plan Básico
+                Plan Default
             </div>
-            <div class="card-price">$2.99</div>
+            <div class="card-price">0.00$</div>
         </div>
         <div class="card-body">
-            <ul>
-                <li>Acceso a funciones básicas</li>
-                <li>Soporte limitado</li>
-            </ul>
-            <button>Donar</button>
-        </div>
-    </div>
-
-    <div class="pricing-card">
-        <img src="https://media.discordapp.net/attachments/1407951835465121912/1414841204662861855/IMG_5159.jpg?ex=68c1090d&is=68bfb78d&hm=b8177b7b2a316996b076b622fe471cf47493144fb394d4a1f208bc91a56f4451&=&format=webp" class="card-banner" alt="Banner">
-        <div class="card-header">
-            <div class="card-header-title">
-                <img src="https://cdn.discordapp.com/attachments/1407951835465121912/1414840325112991764/mitusbot-removebg-preview_1.png?ex=68c1083b&is=68bfb6bb&hm=85b7cc3dadd5c43488b93505c44cbd655a198f61f53388ed35af7e6c201982bd&" alt="Logo">
-                Plan Premium
-            </div>
-            <div class="card-price">$9.99</div>
-        </div>
-        <div class="card-body">
-            <ul>
-                <li>Acceso a funciones avanzadas</li>
-                <li>Soporte prioritario</li>
-            </ul>
-            <button>Donar</button>
+            <button>¡Ya lo tienes!</button>
         </div>
     </div>
 
@@ -450,42 +570,155 @@ footer.footer {
         <div class="card-header">
             <div class="card-header-title">
                 <img src="https://cdn.discordapp.com/attachments/1407951835465121912/1414842482306453574/mituas-removebg-preview_1_1.png?ex=68c10a3e&is=68bfb8be&hm=0a0f97034cb2c42b8ac3db8216daf01eb36bb68e058aa96e18537f0cb2a6cf32&" alt="Logo">
-                Plan UltraPremium
+                Plan Premium
             </div>
-            <div class="card-price">$19</div>
+            <div class="card-price">$3.99</div>
         </div>
         <div class="card-body">
-            <ul>
-                <li>Acceso a todas las funciones</li>
-                <li>Soporte prioritario 24/7</li>
-            </ul>
-            <button>Donar</button>
+            <button>Súmate</button>
         </div>
     </div>
 
 </div>
+
+<section class="comparison-table">
+  <h2>Comparación de Planes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Beneficio</th>
+        <th>Plan Default</th>
+        <th>Plan Premium</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Acceso a comandos básicos</td>
+        <td class="check">✔</td>
+        <td class="check">✔</td>
+      </tr>
+      <tr>
+        <td>Mayor límite de uso de comandos</td>
+        <td class="x">✖</td>
+        <td class="check">✔</td>
+      </tr>
+      <tr>
+        <td>Agregar seguridad en tu servidor</td>
+        <td class="x">✖</td>
+        <td class="check">✔</td>
+      </tr>
+      <tr>
+        <td>Acceso a comandos premium del bot</td>
+        <td class="x">✖</td>
+        <td class="check">✔</td>
+      </tr>
+      <tr>
+        <td>Rol Mitus Premium en Discord</td>
+        <td class="x">✖</td>
+        <td class="check">✔</td>
+      </tr>
+      <tr>
+        <td>Soporte prioritario 24/7</td>
+        <td class="x">✖</td>
+        <td class="check">✔</td>
+      </tr>
+      <tr>
+        <td>Insignia de usuario premium del bot</td>
+        <td class="x">✖</td>
+        <td class="check">✔</td>
+      </tr>
+    </tbody>
+  </table>
 
 <!-- Mayores donadores -->
 <div class="top-donators">
     <h2>Top Donadores</h2>
     <div class="top-donators-container">
         <div class="top-donator-card">
-            <img src="https://via.placeholder.com/60" alt="Avatar">
-            <h3>Usuario1</h3>
-            <p>$100 donados</p>
+            <img src="https://images-ext-1.discordapp.net/external/VDQG2SqxgIwnI45LRU3d4j2U8-u-eTtIbI2jEX3cFf8/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/998766420131319849/575df0fc4bc2b69965f0b12a4df24add.png?format=webp&quality=lossless" alt="Avatar">
+            <h3>gotti</h3>
+            <p>$12 donados</p>
         </div>
         <div class="top-donator-card">
-            <img src="https://via.placeholder.com/60" alt="Avatar">
-            <h3>Usuario2</h3>
-            <p>$80 donados</p>
+            <img src="https://images-ext-1.discordapp.net/external/7iZhWHIW0rzWs2O-EZl7ab0avwu-Lhfm7hlsJ5Ut6ws/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/852948146191728640/927cbbb6b22a37e9bb04d83e45f4ff7f.png?format=webp&quality=lossless" alt="Avatar">
+            <h3>lywk</h3>
+            <p>$8.5 donados</p>
         </div>
         <div class="top-donator-card">
-            <img src="https://via.placeholder.com/60" alt="Avatar">
-            <h3>Usuario3</h3>
-            <p>$50 donados</p>
+            <img src="https://images-ext-1.discordapp.net/external/nbB_v2F0aWoboEDU_tpgulRsoti7X6g-Yh1k1U4TWTw/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/930222374614339675/d90a005e2381ed2679064908ce4b717f.png?format=webp&quality=lossless" alt="Avatar">
+            <h3>Mzrxco</h3>
+            <p>$3.99 donados</p>
         </div>
     </div>
 </div>
+ 
+ 
+
+<section class="premium-faq">
+  <h2>Preguntas Frecuentes (FAQ)</h2>
+
+  <div class="faq-container">
+    <div class="faq">
+      <input type="checkbox" id="faq1">
+      <label for="faq1" class="faq-label">
+        <span class="faq-icon"></span>
+        ¿Qué incluye el plan Premium?
+        <svg viewBox="0 0 24 24" class="arrow"><path d="M6 9l6 6 6-6" /></svg>
+      </label>
+      <div class="faq-content">
+        Acceso a comandos premium, rol en Discord, soporte 24/7 prioritario, insignia exclusiva y mejoras exclusivas.
+      </div>
+    </div>
+
+    <div class="faq">
+      <input type="checkbox" id="faq2">
+      <label for="faq2" class="faq-label">
+        <span class="faq-icon"></span>
+        ¿Puedo cancelar mi suscripción?
+        <svg viewBox="0 0 24 24" class="arrow"><path d="M6 9l6 6 6-6" /></svg>
+      </label>
+      <div class="faq-content">
+        Sí, puedes cancelarla en cualquier momento. No hay contratos ni cargos ocultos.
+      </div>
+    </div>
+
+    <div class="faq">
+      <input type="checkbox" id="faq3">
+      <label for="faq3" class="faq-label">
+        <span class="faq-icon"></span>
+        ¿El soporte está disponible en español?
+        <svg viewBox="0 0 24 24" class="arrow"><path d="M6 9l6 6 6-6" /></svg>
+      </label>
+      <div class="faq-content">
+        Claro que sí. Nuestro equipo está disponible 24/7 y en español.
+      </div>
+    </div>
+
+    <div class="faq">
+      <input type="checkbox" id="faq4">
+      <label for="faq4" class="faq-label">
+        <span class="faq-icon"></span>
+        ¿Qué métodos de pago aceptan?
+        <svg viewBox="0 0 24 24" class="arrow"><path d="M6 9l6 6 6-6" /></svg>
+      </label>
+      <div class="faq-content">
+        PayPal, tarjetas de crédito/débito y próximamente más métodos.
+      </div>
+    </div>
+
+    <div class="faq">
+      <input type="checkbox" id="faq5">
+      <label for="faq5" class="faq-label">
+        <span class="faq-icon"></span>
+        ¿Qué pasa si no renuevo?
+        <svg viewBox="0 0 24 24" class="arrow"><path d="M6 9l6 6 6-6" /></svg>
+      </label>
+      <div class="faq-content">
+        Se desactivarán los beneficios premium y volverás al plan gratuito.
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer class="footer">
   <div class="footer-content">
