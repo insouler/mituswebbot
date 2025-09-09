@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Título animado -->
+  <title id="page-title">Mitus</title>
+  <script>
+    const titleText = "Mitus Bot";
+    let i = 0;
+    const interval = setInterval(() => {
+      document.title = titleText.substring(0, i + 1);
+      i++;
+      if (i === titleText.length) {
+        clearInterval(interval);  // Detiene el intervalo al completar el texto
+      }
+    }, 300);
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1407951835465121912/1414704953884147763/mituas-modified.png?ex=68c08a28&is=68bf38a8&hm=c0f713b37a8fe9e578e2a9540e3e1e28868eb69079363b80f144e640976e175f&=&format=webp&quality=lossless">
+
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset */
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0c0c12;
+  color: #e5e5e5;
+  line-height: 1.6;
+}
+
+    /* Header */
+    header {
+      background: #0D0D10;
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top:0;
+      z-index:1000;
+      padding: 15px 40px;
+      display:flex;
+      justify-content:flex-start;
+      align-items:center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .logo {
+      font-weight:700;
+      font-size:22px;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      white-space: nowrap;
+    }
+    .logo-img{
+      width:28px; height:28px; border-radius:6px; object-fit:cover;
+    }
+    nav {
+  display: flex;
+  gap: 30px;
+  margin-left: 40px; /* 👈 Pegarlo más a la izquierda */
+}
+
+nav a {
+  font-size: 13px;         /* 👈 Más grande */
+  font-weight: bold;
+  color: #fafafa;
+  padding: 10px 16px;      /* 👈 Un poco más de padding */
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  padding-bottom: 4px; 
+}
+
+nav a:hover {
+  background-color: #2a2a38;
+  color: #fff;
+  text-decoration: none;    /* Quita subrayado al pasar el mouse */
+  border-bottom: none;      /* Quita borde */
+  box-shadow: none;         /* Quita sombra 15px*/ 
+  font-weight: bold;
+}
+
+.auth {
+  display: flex;        /* Hace que los hijos estén en fila */
+  gap: 15px;            /* Espacio entre Login y Register */
+  margin-left: 650px;   /* Separación desde el nav */
+}
+
+.auth a {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.3s;
+  text-decoration: none; /* 👈 Quita la raya debajo del texto */
+}
+
+.auth .btn-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espacio entre icono y texto */
+  border: 1px solid #1e1e22;
+  color: white;
+}
+
+.auth .btn-outline img.discord-icon {
+  width: 21px;
+  height: 21px;
+}
+
+.auth .btn-outline:hover {
+  background: #D48EF3;
+  color: white;
+}
+
+.auth .btn-primary {
+  background: #D48EF3;
+  color: white;
+  box-shadow: 0 0 10px #D48EF3;
+}
+
+.auth .btn-primary:hover {
+  transform: scale(1.05);
+  background: #6370FF;
+}
+    .hero {
+      text-align:center;
+      padding:100px 20px 80px;
+      background: radial-gradient(circle at top, #0D0D10, #0D0D10 70%);
+
+    }
+
+    .hero-logo-wrap{
+      display:flex; justify-content:center; margin-bottom:20px;
+    }
+    .hero-logo{
+      width:90px; height:90px; border-radius:50%; object-fit:cover;
+    }
+    .hero h1 {
+      font-size:48px;
+      color:#fff;
+      margin-bottom:20px;
+    }
+    .hero p {
+      max-width:600px;
+      margin:auto;
+      color:#bbb;
+      margin-bottom:30px;
+      font-size:18px;
+    }
+    .hero .btn-primary {
+      display:inline-block;
+      padding:12px 28px;
+      font-size:16px;
+      border-radius:10px;
+      background:#D48EF3;
+      color:#fff;
+      font-weight:600;
+      box-shadow:0 0 20px #7B61FF;
+      transition:.3s;
+    }
+    .hero .btn-primary:hover {transform:translateY(-3px); background:#6370FF;}
+
+    /* Partners */
+    .partners {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:40px;
+      padding:40px 20px;
+      border-bottom:1px solid #222;
+    }
+    .partners span {color:#aaa; font-size:16px; opacity:.8;}
+
+    /* Video/Dashboard Section */
+    .video-section {
+      text-align:center;
+      padding:80px 20px;
+    }
+    .video-section h2 {
+      font-size:28px;
+      margin-bottom:40px;
+      color:#fff;
+    }
+    .video-box {
+      display:inline-block;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 0 30px #434CF680;
+      transition:.3s;
+    }
+    .video-box:hover {transform:scale(1.02);}
+    .video-box img {display:block;}
+
+    /* Pricing */
+    .pricing {
+      padding:80px 20px;
+      text-align:center;
+    }
+    .pricing h2 {font-size:32px; margin-bottom:40px; color:white;}
+    .plans {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap:30px;
+      max-width:1000px;
+      margin:auto;
+    }
+    .plan {
+      background:#1a1a27;
+      padding:30px;
+      border-radius:16px;
+      text-align:left;
+      transition:.3s;
+      border:1px solid transparent;
+    }
+    .plan:hover {
+      transform:translateY(-6px);
+      border:1px solid #434CF650;
+      box-shadow:0 0 25px #434CF660;
+    }
+    .plan h3 {color:#fff; margin-bottom:10px;}
+    .plan .price {
+      font-size:26px;
+      margin:10px 0 20px;
+      color:#434CF6;
+      font-weight:600;
+    }
+    .plan ul {list-style:none; margin-top:10px;}
+    .plan ul li {
+      margin:8px 0;
+      font-size:15px;
+      color:#bbb;
+    }
+    .plan .btn {
+      display:block;
+      margin-top:25px;
+      text-align:center;
+      padding:10px 0;
+      border-radius:10px;
+      background:white;
+      color:white;
+      font-weight:600;
+      transition:.3s;
+      box-shadow:0 0 10px #434CF680;
+    }
+    .plan .btn:hover {transform:scale(1.05); background:#6370FF;}
+    .featured {
+      border:1px solid #434CF680;
+      box-shadow:0 0 35px #434CF680;
+    }
+
+    /* FAQ */
+    .faq {
+      padding:80px 20px;
+      max-width:800px;
+      margin:auto;
+    }
+    .faq h2 {
+      text-align:center;
+      margin-bottom:40px;
+      font-size:28px;
+      color:white;
+    }
+    details {
+      background:#1a1a27;
+      padding:18px 22px;
+      margin-bottom:15px;
+      border-radius:10px;
+      cursor:pointer;
+      transition:.3s;
+    }
+    details:hover {background:#242436;}
+    summary {
+      font-weight:600;
+      color:#fff;
+      font-size:16px;
+      position:relative;
+    }
+    details[open] summary::after {
+      content:"−";
+      position:absolute;
+      right:0;
+      font-size:20px;
+    }
+    summary::after {
+      content:"+";
+      position:absolute;
+      right:0;
+      font-size:20px;
+      color:#D48EF3;
+    }
+    details p {margin-top:10px; color:#bbb; font-size:15px;}
+
+    /* Footer */
+    footer {
+      text-align:center;
+      padding:25px;
+      font-size:14px;
+      color:#777;
+      border-top:1px solid #222;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .hero h1 {font-size:34px;}
+      .hero p {font-size:16px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="https://images-ext-1.discordapp.net/external/D7m5065Qx1S88VdZUK9dUu9aTZ1dDpfhdy3OCDjwYMk/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/1407896900874801233/b908b4c86d2844f0586eb0b6b954c097.png?format=webp&quality=lossless&width=579&height=579" alt="Logo" class="logo-img">
+      Mitus
+    </div>
+    <nav>
+      <a href="#">Comandos</a>
+      <a href="#">Módulos</a>
+      <a href="#">Soporte</a>
+    </nav>
+    <div class="auth">
+      <a href="#" class="btn-outline">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" alt="Discord" class="discord-icon">
+        Login
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+<section class="hero">
+    <div class="hero-logo-wrap">
+      <img src="https://images-ext-1.discordapp.net/external/D7m5065Qx1S88VdZUK9dUu9aTZ1dDpfhdy3OCDjwYMk/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/1407896900874801233/b908b4c86d2844f0586eb0b6b954c097.png?format=webp&quality=lossless&width=579&height=579" alt="Logo Hero" class="hero-logo">
+    </div>
+    <h1>Bienvenido a Mitus</h1>
+    <p>¡Mejora tu experiencia metiendo al bot a tu servidor, un bot con multifunciones para mejorar la estadía en tu servidor!</p>
+    
+    <a href="#" class="btn-primary">
+      <!-- Discord logo en blanco -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="20" height="20" style="vertical-align:middle; margin-right:8px;">
+        <path d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 0 0-.0785-.0371 19.7363 19.7363 0 0 0-4.8852 1.5152.0699.0699 0 0 0-.0321.0277C2.1286 9.0458 1.1826 13.5799 1.5225 18.057c0 .0126.0063.0247.0157.0338a19.911 19.911 0 0 0 5.9931 3.0323.0771.0771 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 0 1 .0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 0 1 .0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 0 1-.0066.1276 12.2986 12.2986 0 0 1-1.873.8914.0766.0766 0 0 0-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 0 0 .0842.0286 19.941 19.941 0 0 0 6.0029-3.0333.077.077 0 0 0 .0157-.0338c.5004-6.1771-.8382-10.6732-3.5485-13.6599a.061.061 0 0 0-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0945 2.1568 2.4189 0 1.3333-.9555 2.419-2.1569 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0945 2.1568 2.4189 0 1.3333-.946 2.419-2.1568 2.419z"/>
+      </svg>
+      Invitar al bot
+    </a>
+  </section>
+  
+
+  <!-- Partners -->
+  <section class="partners">
+    <span>Diversión</span>
+    <span>Comunidad</span>
+    <span>Bot</span>
+    <span>Experiencia</span>
+  </section>
+
+  <!-- Votación / Integraciones -->
+  <section id="integraciones" style="padding:80px 20px; text-align:center; background: radial-gradient(circle at top, #0D0D10, #0D0D10 70%);">
+    <h2 style="font-size:32px; color:#fff; margin-bottom:20px;">Apoya a Mitus</h2>
+    <p style="max-width:600px; margin:auto; font-size:18px; color:#bbb; margin-bottom:30px;">
+      ¿Te gusta <strong>Mitus Bot</strong>?  
+      ¡Votar por nosotros es la mejor forma de apoyarnos!  
+      Con tu ayuda, más usuarios podrán descubrir el bot y seguir mejorando con nuevas funciones.
+    </p>
+
+    <a href="https://top.gg/bot/TU_ID_AQUI/vote" target="_blank" 
+       style="display:inline-block; padding:14px 32px; border-radius:12px; background:#D48EF3; color:#fff; font-size:18px; font-weight:600; box-shadow:0 0 25px #e48ff580; transition:.3s; text-decoration:none;">
+      ¡Vota aquí!
+    </a>
+
+    <div style="margin-top:40px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+      <div style="background:#1a1a27; padding:20px 30px; border-radius:14px; border:1px solid #434CF630; box-shadow:0 0 15px #D48EF3;">
+        <h3 style="color:#fff; margin-bottom:8px;">Gana visibilidad</h3>
+        <p style="color:#aaa; font-size:15px;">¡Cada voto ayuda a que más comunidades conozcan a Mitus!</p>
+      </div>
+      <div style="background:#1a1a27; padding:20px 30px; border-radius:14px; border:1px solid #434CF630; box-shadow:0 0 15px #D48EF3;">
+        <h3 style="color:#fff; margin-bottom:8px;">Apoyo directo</h3>
+        <p style="color:#aaa; font-size:15px;">Tu voto es la mejor forma de motivarnos a seguir creando mejoras.</p>
+      </div>
+      <div style="background:#1a1a27; padding:20px 30px; border-radius:14px; border:1px solid #434CF630; box-shadow:0 0 15px #D48EF3;">
+        <h3 style="color:#fff; margin-bottom:8px;">Crecimiento</h3>
+        <p style="color:#aaa; font-size:15px;">Entre más votos, más alto en los listados de bots.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+<section id="soporte" class="faq">
+    <h2>¿Necesitas ayuda? Aquí estamos para ti</h2>
+    
+    <details>
+      <summary>¿Cómo puedo invitar al bot a mi servidor?</summary>
+      <p>Usa el botón "Invitar al bot" en la parte superior o visita el enlace directo para invitarlo.</p>
+    </details>
+    
+    <details>
+      <summary>¿El bot es gratuito?</summary>
+      <p>Sí, el bot tiene funciones gratuitas y opciones premium con más características.</p>
+    </details>
+  
+    <details>
+      <summary>¿Dónde puedo reportar bugs o solicitar funciones?</summary>
+      <p>Únete a nuestro servidor de soporte y abre un ticket en el canal correspondiente.</p>
+    </details>
+    
+    <div style="margin-top: 20px; text-align: center;">
+      <a href="https://discord.gg/Vms3bPwRc2" target="_blank" class="btn-primary" style="padding: 12px 24px; background:#D48EF3; box-shadow:0 0 20px #ffffff; border-radius:8px; font-weight:600; display:inline-block; transition:.3s;">
+        Ir al servidor de soporte
+      </a>
+    </div>
+  </section>
+  
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Mitus. Todos los derechos reservados.
+  </footer>
+</body>
+</html>
+ 

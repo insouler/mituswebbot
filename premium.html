@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Planes Premium - Brutus Bot</title>
+  <style>
+    body {
+      background-color: #0f0e17;
+      font-family: 'Poppins', sans-serif;
+      color: #ddd;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      max-width: 800px;
+      width: 100%;
+      margin-bottom: 50px;
+    }
+
+    .plan {
+      background: #1a1a27;
+      border-radius: 18px;
+      padding: 22px 20px;
+      box-shadow: 0 0 12px #4a3fff60;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+      font-size: 0.9rem;
+      color: #ccc;
+      text-align: center;
+    }
+
+    .plan.featured {
+      border-color: #9d7dff;
+      box-shadow: 0 0 20px #9d7dffaa;
+      position: relative;
+    }
+
+    .plan.featured::before {
+      content: "Más Popular";
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #9d7dff;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 6px 16px;
+      border-radius: 24px;
+      box-shadow: 0 0 10px #9d7dffbb;
+      z-index: 10;
+    }
+
+    .plan h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .price {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #9d7dff;
+      margin: 12px 0 25px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px 0;
+    }
+
+    ul li {
+      font-size: 0.9rem;
+      margin: 10px 0;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #9d7dff;
+      font-weight: bold;
+    }
+
+    .btn {
+      font-size: 1rem;
+      background: #9d7dff;
+      border: none;
+      color: #1a1a27;
+      padding: 12px 0;
+      border-radius: 28px;
+      cursor: pointer;
+      box-shadow: 0 0 16px #9d7dffaa;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background-color: #7c5de8;
+      box-shadow: 0 0 22px #7c5de8bb;
+    }
+
+    /* Donadores destacados */
+
+    .donators-section {
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+      margin-top: 40px;
+      color: #ddd;
+    }
+
+    .donators-section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #9d7dff;
+    }
+
+    .donators-list {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .donator-card {
+      background: #1a1a27;
+      border-radius: 16px;
+      padding: 20px;
+      width: 150px;
+      box-shadow: 0 0 10px #9d7dffaa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .donator-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 20px #9d7dffcc;
+    }
+
+    .donator-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      margin-bottom: 14px;
+      object-fit: cover;
+      border: 2px solid #9d7dff;
+    }
+
+    .donator-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .donation-amount {
+      font-size: 0.9rem;
+      color: #c9b8ff;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="pricing">
+    <h2>A plan for every business</h2>
+    <div class="plans">
+      <div class="plan">
+        <h3>Basic</h3>
+        <p class="price">$11 / mes</p>
+        <ul>
+          <li>Para pequeñas comunidades</li>
+          <li>Hasta 5 usuarios</li>
+          <li>5 GB de almacenamiento</li>
+        </ul>
+        <button class="btn">Comenzar</button>
+      </div>
+      <div class="plan featured">
+        <h3>Profesional</h3>
+        <p class="price">$59 / mes</p>
+        <ul>
+          <li>El más popular</li>
+          <li>Hasta 15 usuarios</li>
+          <li>50 GB de almacenamiento</li>
+          <li>Soporte prioritario</li>
+          <li>Funciones exclusivas</li>
+        </ul>
+        <button class="btn">Comenzar</button>
+      </div>
+      <div class="plan">
+        <h3>Enterprise</h3>
+        <p class="price">$119 / mes</p>
+        <ul>
+          <li>Para grandes comunidades</li>
+          <li>Usuarios ilimitados</li>
+          <li>Almacenamiento ilimitado</li>
+        </ul>
+        <button class="btn">Comenzar</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="donators-section">
+    <h3>Mayores Donadores</h3>
+    <div class="donators-list">
+      <div class="donator-card">
+        <img class="donator-avatar" src="https://images-ext-1.discordapp.net/external/PVKVcntzksTzzZIyp-T3n5A8qjF51ExEeYIHNIXaZcs/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/998766420131319849/9b6ec4e7c1dbe2392a0543efb07a9f9c.png?format=webp&quality=lossless&width=230&height=230" alt="Avatar Donador 1" />
+        <div class="donator-name">gotti</div>
+        <div class="donation-amount">$35</div>
+      </div>
+      <div class="donator-card">
+        <img class="donator-avatar" src="https://images-ext-1.discordapp.net/external/soEU_SwQlY2p1WeSYxsf61o9ryiOHAYuP1k9XHqMBZs/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/633413926842793984/5fc1115957295859a6521dca2f771f68.png?format=webp&quality=lossless&width=415&height=415" alt="Avatar Donador 2" />
+        <div class="donator-name">iGobdi</div>
+        <div class="donation-amount">$30</div>
+      </div>
+      <div class="donator-card">
+        <img class="donator-avatar" src="https://images-ext-1.discordapp.net/external/vzl3NGWAEK1Te1Gad7T5iMDtCSNZctkSGApvhD6JoxM/https/cdn.discordapp.com/embed/avatars/2.png?format=webp&quality=lossless&width=230&height=230" alt="Avatar Donador 3" />
+        <div class="donator-name">itLucass</div>
+        <div class="donation-amount">$20</div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

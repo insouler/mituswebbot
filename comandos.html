@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Comandos | Brutus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0c0c12;
+      color: #e5e5e5;
+    }
+    header {
+      background: rgba(15,15,20,0.9);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 22px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-img {
+      width: 28px; height: 28px; border-radius: 6px;
+    }
+    .commands-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 40px auto;
+      gap: 30px;
+      padding: 0 20px;
+    }
+    .categories {
+      width: 250px;
+      background: #1a1a27;
+      padding: 20px;
+      border-radius: 12px;
+    }
+    .categories h3 {
+      margin-bottom: 15px;
+      color: #fff;
+    }
+    .categories ul {
+      list-style: none;
+      padding: 0;
+    }
+    .categories li {
+      margin-bottom: 10px;
+      color: #ccc;
+      font-size: 14px;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 5px;
+    }
+    .categories li:hover, .categories li.active {
+      background: #9d7dff50;
+      color: #fff;
+    }
+    .command-list {
+      flex: 1;
+    }
+    .search-box {
+      margin-bottom: 20px;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: none;
+      background: #2a2a3b;
+      color: #fff;
+      font-size: 14px;
+    }
+    .command-item {
+      background: #1a1a27;
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .command-item strong {
+      color: white;
+    }
+    .command-item p {
+      color: #bbb;
+      margin-top: 5px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://images-ext-1.discordapp.net/external/xaZX4GsvSgN1rmTXxlgKiSPx7JrIO3qSBzZ2PeABy0c/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/1407896900874801233/89b86d4e5ec02d115a45f702a5104d3d.png?format=webp&quality=lossless&width=586&height=586" class="logo-img" alt="Brutus">
+      Brutus Bot
+    </div>
+  </header>
+
+  <div class="commands-container">
+    <!-- Categorías -->
+    <aside class="categories">
+      <h3>Categorías</h3>
+      <ul id="category-list">
+        <li class="active" data-category="all">Todos (473)</li>
+        <li data-category="animals">Sorteos (3)</li>
+        <li data-category="anime">Anime (35)</li>
+        <li data-category="birthday">Birthday (5)</li>
+        <li data-category="fun">Fun (53)</li>
+      </ul>
+    </aside>
+
+    <!-- Comandos -->
+    <section class="command-list" id="command-list">
+      <!-- Buscador -->
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Buscar comando...">
+      </div>
+
+      <!-- Comandos -->
+      <div class="command-item" data-category="fun">
+        <strong>8ball</strong>
+        <p>Pregunta a la bola mágica de Neko</p>
+      </div>
+      <div class="command-item" data-category="animals">
+        <strong>gstart</strong>
+        <p>Crea un sorteo a tu modo: bgstart 1h 1 Nitro Classic</p>
+      </div>
+      <div class="command-item" data-category="animals">
+        <strong>greroll</strong>
+        <p>¿No reclamaron a tiempo? Utiliza reroll para ver otro ganador: bgreroll (ID) </p>
+      </div>
+      <div class="command-item" data-category="animals">
+        <strong>gend</strong>
+        <p>¿Quieres acabar un sorteo antes de su tiempo? Usa bgend (ID) </p>
+      </div>
+      <div class="command-item" data-category="anime">
+        <strong>act banghead</strong>
+        <p>Golpea tu cabeza con frustración (versión anime)</p>
+      </div>
+      <div class="command-item" data-category="birthday">
+        <strong>birthday cake</strong>
+        <p>Envía una tarta virtual de cumpleaños</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- JS: búsqueda + filtrado -->
+  <script>
+    const categories = document.querySelectorAll("#category-list li");
+    const commandItems = document.querySelectorAll(".command-item");
+    const searchInput = document.getElementById("searchInput");
+
+    let currentCategory = "all";
+
+    function filterCommands() {
+      const searchTerm = searchInput.value.toLowerCase();
+
+      commandItems.forEach(cmd => {
+        const category = cmd.getAttribute("data-category");
+        const text = cmd.textContent.toLowerCase();
+
+        const matchCategory = (currentCategory === "all" || category === currentCategory);
+        const matchSearch = text.includes(searchTerm);
+
+        if (matchCategory && matchSearch) {
+          cmd.classList.remove("hidden");
+        } else {
+          cmd.classList.add("hidden");
+        }
+      });
+    }
+
+    // Cambio de categoría
+    categories.forEach(cat => {
+      cat.addEventListener("click", () => {
+        categories.forEach(c => c.classList.remove("active"));
+        cat.classList.add("active");
+
+        currentCategory = cat.getAttribute("data-category");
+        filterCommands();
+      });
+    });
+
+    // Búsqueda en tiempo real
+    searchInput.addEventListener("input", () => {
+      filterCommands();
+    });
+  </script>
+</body>
+</html>
