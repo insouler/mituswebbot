@@ -343,22 +343,18 @@ nav a:hover {
       <a href="#">Módulos</a>
       <a href="#">Soporte</a>
     </nav>
-
-    <header>
-      <!-- logo y nav sin cambios -->
-      <div class="auth">
-        <a href="premium.html" class="premium-button">Premium</a>
-        <div id="user-info" style="display:none; align-items:center; gap:8px;">
-          <img id="user-avatar" src="" alt="Avatar" style="width:28px;height:28px;border-radius:50%;">
-          <span id="username" style="color:white;"></span>
-          <button id="logout" style="background:none; border:none; color:#D48EF3; cursor:pointer;">Cerrar sesión</button>
-        </div>
-        <button id="login" class="btn-outline">
-          <img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" alt="Discord" class="discord-icon">
-          Login
-        </button>
+    <div class="auth">
+      <a href="premium.html" class="premium-button">Premium</a>
+      <div id="user-info" style="display: none;">
+        <p>Hola, <span id="username"></span></p>
+        <button id="logout">Cerrar sesión</button>
       </div>
-    </header>
+      <a href="#" id="login" class="btn-outline">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" alt="Discord" class="discord-icon">
+        Login
+      </a>
+    </div>
+  </header>
 
  
     
@@ -451,47 +447,6 @@ nav a:hover {
   <footer>
     © 2025 Mitus. Todos los derechos reservados.
   </footer>
-  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.3/auth0-spa-js.production.js"></script>
-  <script>
-    window.addEventListener('load', async () => {
-      const auth0 = await createAuth0Client({
-        domain: "dev-rf5v0xclx7up4g24.us.auth0.com",  // tu dominio Auth0
-        client_id: "EJAPJWHfb59kRSQD4hcWo4g5ZGjMNK4B",                     // tu Client ID
-        authorizationParams: {
-          redirect_uri: window.location.origin         // misma página como callback
-        }
-      });
-
-      // Procesar callback si aplica
-      const query = window.location.search;
-      if (query.includes("code=") && query.includes("state=")) {
-        await auth0.handleRedirectCallback();
-        window.history.replaceState({}, document.title, window.location.pathname);
-      }
-
-      const isAuthenticated = await auth0.isAuthenticated();
-      if (isAuthenticated) {
-        const user = await auth0.getUser();
-        document.getElementById('login').style.display = 'none';
-        const userInfo = document.getElementById('user-info');
-        userInfo.style.display = 'flex';
-        document.getElementById('username').textContent = user.name || user.email;
-        document.getElementById('user-avatar').src = user.picture || '';
-      } else {
-        document.getElementById('login').style.display = 'inline-flex';
-        document.getElementById('user-info').style.display = 'none';
-      }
-
-      // Eventos
-      document.getElementById('login').addEventListener('click', () => {
-        auth0.loginWithRedirect();
-      });
-
-      document.getElementById('logout').addEventListener('click', () => {
-        auth0.logout({ logoutParams: { returnTo: window.location.origin } });
-      });
-    });
-  </script>
 </body>
 </html>
  
