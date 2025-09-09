@@ -86,9 +86,9 @@ nav a:hover {
 }
 
 .auth {
-  display: flex;        /* Hace que los hijos estén en fila */
-  gap: 15px;            /* Espacio entre Login y Register */
-  margin-left: 650px;   /* Separación desde el nav */
+  display: flex;
+  gap: 15px;
+  margin-left: auto; /* ✅ Empuja el bloque a la derecha */
 }
 
 .auth a {
@@ -310,6 +310,25 @@ nav a:hover {
       .hero h1 {font-size:34px;}
       .hero p {font-size:16px;}
     }
+    .premium-button {
+  background: linear-gradient(90deg, #8439fc, #f1b0d6);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 0 12px #ff6ec470;
+  transition: all 0.3s ease;
+  margin-right: 7px;
+}
+
+.premium-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px #ff6ec4aa;
+}
   </style>
 </head>
 <body>
@@ -325,12 +344,17 @@ nav a:hover {
       <a href="#">Soporte</a>
     </nav>
     <div class="auth">
+      <a href="premium.html" class="premium-button">Premium</a>
       <a href="#" class="btn-outline">
         <img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" alt="Discord" class="discord-icon">
         Login
       </a>
     </div>
   </header>
+
+ 
+    
+ 
 
   <!-- Hero -->
 <section class="hero">
