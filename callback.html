@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Callback</title>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.23/auth0-spa-js.production.js"></script>
+</head>
+<body>
+    <script>
+        window.onload = async () => {
+            const auth0 = await createAuth0Client({
+                domain: 'dev-rf5v0xclx7up4g24.us.auth0.com',
+                client_id: 'EJAPJWHfb59kRSQD4hcWo4g5ZGjMNK4B'
+            });
+
+            // Procesa la respuesta de login
+            const result = await auth0.handleRedirectCallback();
+
+            // Obtén los datos del usuario
+            const user = await auth0.getUser();
+
+            // Guarda el usuario o token donde quieras (ejemplo: localStorage)
+            localStorage.setItem('user', JSON.stringify(user));
+
+            // Redirige a la página principal o dashboard
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
