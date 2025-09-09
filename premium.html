@@ -1,298 +1,523 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Premium | Mitus</title>
- 
-  <style>
-    header {
-  width: 100%;
-  max-width: 800px;
-  margin-bottom: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Título animado -->
+  <title id="page-title">Premium | Mitus</title>
+  <script>
+    const titleText = "Premium | Mitus";
+    let i = 0;
+    const interval = setInterval(() => {
+      document.title = titleText.substring(0, i + 1);
+      i++;
+      if (i === titleText.length) {
+        clearInterval(interval);  // Detiene el intervalo al completar el texto
+      }
+    }, 300);
+  </script>
+  <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1407951835465121912/1414704953884147763/mituas-modified.png?ex=68c08a28&is=68bf38a8&hm=c0f713b37a8fe9e578e2a9540e3e1e28868eb69079363b80f144e640976e175f&=&format=webp&quality=lossless">
+  
+<style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0b0b1d;
+    color: #fff;
+    text-align: center;
 }
-    nav a.inicio-btn {
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #c3a9ff;
+}
+
+/* Cards container */
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 3rem auto;
+    max-width: 1200px;
+}
+
+/* Card */
+.pricing-card {
+    background: #15152b;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(163, 120, 255, 0.2);
+    width: 320px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pricing-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(163, 120, 255, 0.4);
+}
+
+/* Banner */
+.card-banner {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Header with logo + title + price */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(163,120,255,0.2);
+}
+.card-header img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+.card-header-title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.card-price {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #a378ff;
+}
+
+/* Card body */
+.card-body {
+    padding: 1rem;
+}
+.card-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+.card-body ul li {
+    margin: 0.5rem 0;
+}
+
+/* Button */
+.card-body button {
+    background: #434CF6;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+.card-body button:hover {
+    background: #6c74ff;
+}
+
+/* Mayores donadores */
+.top-donators {
+    margin: 4rem auto 2rem;
+    max-width: 1200px;
+}
+.top-donators h2 {
+    margin-bottom: 2rem;
+}
+.top-donators-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.top-donator-card {
+    background: #15152b;
+    border-radius: 16px;
+    padding: 1rem;
+    width: 250px;
+    box-shadow: 0 0 15px rgba(163, 120, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.top-donator-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(163, 120, 255, 0.4);
+}
+.top-donator-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+.top-donator-card h3 {
+    margin: 0.5rem 0;
+    color: #a378ff;
+}
+.top-donator-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0c0c12;
+  color: #e5e5e5;
+  line-height: 1.6;
+}
+
+    /* Header */
+    header {
+      background: #0D0D10;
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top:0;
+      z-index:1000;
+      padding: 15px 40px;
+      display:flex;
+      justify-content:flex-start;
+      align-items:center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .logo {
+      font-weight:700;
+      font-size:22px;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      white-space: nowrap;
+    }
+    .logo-img{
+      width:28px; height:28px; border-radius:6px; object-fit:cover;
+    }
+nav {
+  display: flex;
+  gap: 30px;
+  margin-left: 40px; /* 👈 Pegarlo más a la izquierda */
+}
+
+nav a {
+  font-size: 13px;         /* 👈 Más grande */
+  font-weight: bold;
+  color: #fafafa;
+  padding: 10px 16px;      /* 👈 Un poco más de padding */
+  border-radius: 8px;
+  transition: all 0.3s ease;
   text-decoration: none;
+  padding-bottom: 4px; 
+}
+
+nav a:hover {
+  background-color: #2a2a38;
   color: #fff;
-  background: #9d7dff;
+  text-decoration: none;    /* Quita subrayado al pasar el mouse */
+  border-bottom: none;      /* Quita borde */
+  box-shadow: none;         /* Quita sombra 15px*/ 
+  font-weight: bold;
+}
+.auth {
+  display: flex;
+  gap: 15px;
+  margin-left: auto; /* ✅ Empuja el bloque a la derecha */
+}
+
+.auth a {
   padding: 8px 16px;
   border-radius: 8px;
   font-size: 14px;
+  transition: 0.3s;
+  text-decoration: none; /* 👈 Quita la raya debajo del texto */
+}
+
+.auth .btn-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espacio entre icono y texto */
+  border: 1px solid #1e1e22;
+  color: white;
+}
+
+.auth .btn-outline img.discord-icon {
+  width: 21px;
+  height: 21px;
+}
+
+.auth .btn-outline:hover {
+  background: #D48EF3;
+  color: white;
+}
+
+.auth .btn-primary {
+  background: #D48EF3;
+  color: white;
+  box-shadow: 0 0 10px #D48EF3;
+}
+
+.auth .btn-primary:hover {
+  transform: scale(1.05);
+  background: #6370FF;
+}
+footer {
+      text-align:center;
+      padding:25px;
+      font-size:14px;
+      color:#777;
+      border-top:1px solid #222;
+    }
+    .premium-button {
+  background: linear-gradient(90deg, #8439fc, #f1b0d6);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
   font-weight: 600;
-  transition: background 0.3s;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 0 12px #ff6ec470;
+  transition: all 0.3s ease;
+  margin-right: 7px;
 }
-nav a.inicio-btn:hover {
-  background: #bba0ff;
+
+.premium-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px #ff6ec4aa;
 }
-    body {
-      background-color: #0f0e17;
-      font-family: 'Poppins', sans-serif;
-      color: #ddd;
-      margin: 0;
-      padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+.logo {
+  text-decoration: none;
+  color: #fff;
+}
+.logo:hover {
+  opacity: 0.85;
+}
+footer.footer {
+  background-color: #0d0d10;
+  padding: 40px 60px 20px;
+  font-family: 'Inter', sans-serif;
+  color: #aaa;
+  border-top: 1px solid #222;
+}
 
-    h2 {
-      font-size: 2rem;
-      color: #fff;
-      margin-bottom: 30px;
-      text-align: center;
-    }
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
 
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-      max-width: 800px;
-      width: 100%;
-      margin-bottom: 50px;
-    }
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 150px;
+}
 
-    .plan {
-      background: #1a1a27;
-      border-radius: 18px;
-      padding: 22px 20px;
-      box-shadow: 0 0 12px #4a3fff60;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 2px solid transparent;
-      font-size: 0.9rem;
-      color: #ccc;
-      text-align: center;
-    }
+.footer-logo {
+  width: 80px;
+  margin-bottom: 10px;
+}
 
-    .plan.featured {
-      border-color: #9d7dff;
-      box-shadow: 0 0 20px #9d7dffaa;
-      position: relative;
-    }
+.footer-col a {
+  text-decoration: none;
+  color: #aaa;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
 
-    .plan.featured::before {
-      content: "Más Popular";
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #9d7dff;
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 6px 16px;
-      border-radius: 24px;
-      box-shadow: 0 0 10px #9d7dffbb;
-      z-index: 10;
-    }
+.footer-col a:hover {
+  color: #fff;
+}
 
-    .plan h3 {
-      font-size: 1.4rem;
-      margin-bottom: 8px;
-      color: #fff;
-    }
+.footer-col span {
+  font-weight: bold;
+  color: #9fe3ff;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
 
-    .price {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #9d7dff;
-      margin: 12px 0 25px;
-    }
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 30px 0;
-    }
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: 0.2s ease;
+}
 
-    ul li {
-      font-size: 0.9rem;
-      margin: 10px 0;
-      padding-left: 24px;
-      position: relative;
-    }
+.social-icons img:hover {
+  filter: none;
+  opacity: 1;
+}
 
-    ul li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: #9d7dff;
-      font-weight: bold;
-    }
+.footer-col .copyright {
+  font-size: 13px;
+  color: #777;
+  margin-top: auto;
+}
+.footer-col.follow-us {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-width: 150px;
+}
 
-    .btn {
-      font-size: 1rem;
-      background: #9d7dff;
-      border: none;
-      color: #1a1a27;
-      padding: 12px 0;
-      border-radius: 28px;
-      cursor: pointer;
-      box-shadow: 0 0 16px #9d7dffaa;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-
-    .btn:hover {
-      background-color: #7c5de8;
-      box-shadow: 0 0 22px #7c5de8bb;
-    }
-
-    /* Donadores destacados */
-
-    .donators-section {
-      width: 100%;
-      max-width: 800px;
-      text-align: center;
-      margin-top: 40px;
-      color: #ddd;
-    }
-
-    .donators-section h3 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #9d7dff;
-    }
-
-    .donators-list {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .donator-card {
-      background: #1a1a27;
-      border-radius: 16px;
-      padding: 20px;
-      width: 150px;
-      box-shadow: 0 0 10px #9d7dffaa;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 0.3s ease;
-    }
-
-    .donator-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 20px #9d7dffcc;
-    }
-
-    .donator-avatar {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      margin-bottom: 14px;
-      object-fit: cover;
-      border: 2px solid #9d7dff;
-    }
-
-    .donator-name {
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-bottom: 6px;
-      color: #fff;
-    }
-
-    .donation-amount {
-      font-size: 0.9rem;
-      color: #c9b8ff;
-    }
-    .logo {
-      font-weight: 700;
-      font-size: 22px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .logo-img {
-      width: 28px; height: 28px; border-radius: 6px;
-    }
-  </style>
+.footer-col.follow-us span {
+  font-weight: bold;
+  color: #aaa; /* Color corregido */
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+</style>
 </head>
 <body>
 
-  <body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="https://images-ext-1.discordapp.net/external/D7m5065Qx1S88VdZUK9dUu9aTZ1dDpfhdy3OCDjwYMk/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/1407896900874801233/b908b4c86d2844f0586eb0b6b954c097.png?format=webp&quality=lossless&width=579&height=579" alt="Logo" class="logo-img">
+      Mitus
+    </div>
+    <nav>
+      <a href="comandos.html">Comandos</a>
+      <a href="#">Módulos</a>
+      <a href="#">Soporte</a>
+    </nav>
+    <div class="auth">
+      <a href="premium.html" class="premium-button">Premium</a>
+      <a href="#" id="login" class="btn-outline">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" alt="Discord" class="discord-icon">
+        Login
+      </a>
+    </div>
+  </header>
 
-    <header>
-      <div class="logo">
-        <img src="https://images-ext-1.discordapp.net/external/xaZX4GsvSgN1rmTXxlgKiSPx7JrIO3qSBzZ2PeABy0c/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/1407896900874801233/89b86d4e5ec02d115a45f702a5104d3d.png?format=webp&quality=lossless&width=586&height=586" class="logo-img" alt="Brutus">
-        Mitus
-      </div>
-      <nav>
-        <a href="index.html" class="inicio-btn">Inicio</a>
-      </nav>
-    </header>
-  
-    <!-- Aquí el resto de tu HTML como está -->
-  
-  </body>
+<h2>Apartado Premium</h2>
 
-  <section class="pricing">
-    <h2>A plan for every business</h2>
-    <div class="plans">
-      <div class="plan">
-        <h3>Basic</h3>
-        <p class="price">$11 / mes</p>
-        <ul>
-          <li>Para pequeñas comunidades</li>
-          <li>Hasta 5 usuarios</li>
-          <li>5 GB de almacenamiento</li>
-        </ul>
-        <button class="btn">Comenzar</button>
-      </div>
-      <div class="plan featured">
-        <h3>Profesional</h3>
-        <p class="price">$59 / mes</p>
-        <ul>
-          <li>El más popular</li>
-          <li>Hasta 15 usuarios</li>
-          <li>50 GB de almacenamiento</li>
-          <li>Soporte prioritario</li>
-          <li>Funciones exclusivas</li>
-        </ul>
-        <button class="btn">Comenzar</button>
-      </div>
-      <div class="plan">
-        <h3>Enterprise</h3>
-        <p class="price">$119 / mes</p>
-        <ul>
-          <li>Para grandes comunidades</li>
-          <li>Usuarios ilimitados</li>
-          <li>Almacenamiento ilimitado</li>
-        </ul>
-        <button class="btn">Comenzar</button>
+<div class="pricing-container">
+
+    <!-- Tarjetas existentes -->
+    <div class="pricing-card">
+        <img src="https://media.discordapp.net/attachments/1407951835465121912/1414841204302024715/IMG_5160.jpg?ex=68c1090d&is=68bfb78d&hm=0c8f6e19e12ba8eb63bed3e6972fdc6d9832b96ca0d0269c03f66fe49dde2782&=&format=webp" class="card-banner" alt="Banner">
+        <div class="card-header">
+            <div class="card-header-title">
+                <img src="https://cdn.discordapp.com/attachments/1407951835465121912/1414841426721636382/MitusBotardo-removebg-preview_1.png?ex=68c10942&is=68bfb7c2&hm=9d64c4401b4c438498fe8c724529e0adf3de9c2444fc5ec6a880a4f0239d0107&" alt="Logo">
+                Plan Básico
+            </div>
+            <div class="card-price">$2.99</div>
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Acceso a funciones básicas</li>
+                <li>Soporte limitado</li>
+            </ul>
+            <button>Donar</button>
+        </div>
+    </div>
+
+    <div class="pricing-card">
+        <img src="https://media.discordapp.net/attachments/1407951835465121912/1414841204662861855/IMG_5159.jpg?ex=68c1090d&is=68bfb78d&hm=b8177b7b2a316996b076b622fe471cf47493144fb394d4a1f208bc91a56f4451&=&format=webp" class="card-banner" alt="Banner">
+        <div class="card-header">
+            <div class="card-header-title">
+                <img src="https://cdn.discordapp.com/attachments/1407951835465121912/1414840325112991764/mitusbot-removebg-preview_1.png?ex=68c1083b&is=68bfb6bb&hm=85b7cc3dadd5c43488b93505c44cbd655a198f61f53388ed35af7e6c201982bd&" alt="Logo">
+                Plan Premium
+            </div>
+            <div class="card-price">$9.99</div>
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Acceso a funciones avanzadas</li>
+                <li>Soporte prioritario</li>
+            </ul>
+            <button>Donar</button>
+        </div>
+    </div>
+
+    <div class="pricing-card">
+        <img src="https://media.discordapp.net/attachments/1407951835465121912/1414841205010862151/IMG_5158.jpg?ex=68c1090d&is=68bfb78d&hm=f0b858ffa01f5afaa1ade2064f22990cd380d67c3a9e1b6db1d50c575475d147&=&format=webp" class="card-banner" alt="Banner">
+        <div class="card-header">
+            <div class="card-header-title">
+                <img src="https://cdn.discordapp.com/attachments/1407951835465121912/1414842482306453574/mituas-removebg-preview_1_1.png?ex=68c10a3e&is=68bfb8be&hm=0a0f97034cb2c42b8ac3db8216daf01eb36bb68e058aa96e18537f0cb2a6cf32&" alt="Logo">
+                Plan UltraPremium
+            </div>
+            <div class="card-price">$19</div>
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Acceso a todas las funciones</li>
+                <li>Soporte prioritario 24/7</li>
+            </ul>
+            <button>Donar</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- Mayores donadores -->
+<div class="top-donators">
+    <h2>Top Donadores</h2>
+    <div class="top-donators-container">
+        <div class="top-donator-card">
+            <img src="https://via.placeholder.com/60" alt="Avatar">
+            <h3>Usuario1</h3>
+            <p>$100 donados</p>
+        </div>
+        <div class="top-donator-card">
+            <img src="https://via.placeholder.com/60" alt="Avatar">
+            <h3>Usuario2</h3>
+            <p>$80 donados</p>
+        </div>
+        <div class="top-donator-card">
+            <img src="https://via.placeholder.com/60" alt="Avatar">
+            <h3>Usuario3</h3>
+            <p>$50 donados</p>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <!-- Columna 1: Logo -->
+    <div class="footer-col">
+      <img src="https://media.discordapp.net/attachments/1407951835465121912/1414854777040408668/mituas-modified.png?ex=68c115b1&is=68bfc431&hm=b64eae928367cee97eaad93521eac123765f0fe81ef1fb964de0690df263dcde&=&format=webp&quality=lossless" alt="Mitus Logo" class="footer-logo">
+      <p class="copyright">© 2025 Mitus</p>
+    </div>
+
+    <!-- Columna 2 -->
+    <div class="footer-col">
+      <a href="comandos.html">Comandos</a>
+      <a href="#">Módulos</a>
+      <a href="#">Soporte</a>
+    </div>
+
+    <!-- Columna 3 -->
+    <div class="footer-col">
+      <a href="premium.html">Premium</a>
+      <a href="#">Términos y Condiciones</a>
+      <a href="#">Privacidad</a>
+    </div>
+
+    <!-- Columna 4: Redes -->
+    <div class="footer-col follow-us">
+      <span>Síguenos</span>
+      <div class="social-icons">
+        <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" alt="Discord"></a>
+        <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/twitter--v1.png" alt="Twitter"></a>
       </div>
     </div>
-  </section>
-
-  <section class="donators-section">
-    <h3>Mayores Donadores</h3>
-    <div class="donators-list">
-      <div class="donator-card">
-        <img class="donator-avatar" src="https://images-ext-1.discordapp.net/external/PVKVcntzksTzzZIyp-T3n5A8qjF51ExEeYIHNIXaZcs/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/998766420131319849/9b6ec4e7c1dbe2392a0543efb07a9f9c.png?format=webp&quality=lossless&width=230&height=230" alt="Avatar Donador 1" />
-        <div class="donator-name">gotti</div>
-        <div class="donation-amount">$35</div>
-      </div>
-      <div class="donator-card">
-        <img class="donator-avatar" src="https://images-ext-1.discordapp.net/external/soEU_SwQlY2p1WeSYxsf61o9ryiOHAYuP1k9XHqMBZs/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/633413926842793984/5fc1115957295859a6521dca2f771f68.png?format=webp&quality=lossless&width=415&height=415" alt="Avatar Donador 2" />
-        <div class="donator-name">iGobdi</div>
-        <div class="donation-amount">$30</div>
-      </div>
-      <div class="donator-card">
-        <img class="donator-avatar" src="https://images-ext-1.discordapp.net/external/vzl3NGWAEK1Te1Gad7T5iMDtCSNZctkSGApvhD6JoxM/https/cdn.discordapp.com/embed/avatars/2.png?format=webp&quality=lossless&width=230&height=230" alt="Avatar Donador 3" />
-        <div class="donator-name">itLucass</div>
-        <div class="donation-amount">$20</div>
-      </div>
-    </div>
-  </section>
-
+  </div>
+</footer>
 </body>
 </html>

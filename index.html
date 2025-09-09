@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Título animado -->
-  <title id="page-title">Mitus</title>
+  <title id="page-title">Mitus Bot</title>
   <script>
     const titleText = "Mitus Bot";
     let i = 0;
@@ -329,6 +329,92 @@ nav a:hover {
   transform: scale(1.05);
   box-shadow: 0 0 16px #ff6ec4aa;
 }
+
+footer.footer {
+  background-color: #0d0d10;
+  padding: 40px 60px 20px;
+  font-family: 'Inter', sans-serif;
+  color: #aaa;
+  border-top: 1px solid #222;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 150px;
+}
+
+.footer-logo {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: #aaa;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: #fff;
+}
+
+.footer-col span {
+  font-weight: bold;
+  color: #9fe3ff;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: 0.2s ease;
+}
+
+.social-icons img:hover {
+  filter: none;
+  opacity: 1;
+}
+
+.footer-col .copyright {
+  font-size: 13px;
+  color: #777;
+  margin-top: auto;
+}
+.footer-col.follow-us {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-width: 150px;
+}
+
+.footer-col.follow-us span {
+  font-weight: bold;
+  color: #aaa; /* Color corregido */
+  margin-bottom: 5px;
+  font-size: 14px;
+}
   </style>
 </head>
 <body>
@@ -444,8 +530,37 @@ nav a:hover {
  
 
   <!-- Footer -->
-  <footer>
-    © 2025 Mitus. Todos los derechos reservados.
+  <footer class="footer">
+    <div class="footer-content">
+      <!-- Columna 1: Logo -->
+      <div class="footer-col">
+        <img src="https://media.discordapp.net/attachments/1407951835465121912/1414854777040408668/mituas-modified.png?ex=68c115b1&is=68bfc431&hm=b64eae928367cee97eaad93521eac123765f0fe81ef1fb964de0690df263dcde&=&format=webp&quality=lossless" alt="Mitus Logo" class="footer-logo">
+        <p class="copyright">© 2025 Mitus</p>
+      </div>
+  
+      <!-- Columna 2 -->
+      <div class="footer-col">
+        <a href="comandos.html">Comandos</a>
+        <a href="#">Módulos</a>
+        <a href="#">Soporte</a>
+      </div>
+  
+      <!-- Columna 3 -->
+      <div class="footer-col">
+        <a href="premium.html">Premium</a>
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Privacidad</a>
+      </div>
+  
+      <!-- Columna 4: Redes -->
+      <div class="footer-col follow-us">
+        <span>Síguenos</span>
+        <div class="social-icons">
+          <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" alt="Discord"></a>
+          <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/twitter--v1.png" alt="Twitter"></a>
+        </div>
+      </div>
+    </div>
   </footer>
 </body>
 </html>

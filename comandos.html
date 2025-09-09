@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Comandos | Brutus</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Título animado -->
+  <title id="page-title">Comandos | Mitus</title>
+  <script>
+    const titleText = "Comandos | Mitus";
+    let i = 0;
+    const interval = setInterval(() => {
+      document.title = titleText.substring(0, i + 1);
+      i++;
+      if (i === titleText.length) {
+        clearInterval(interval);  // Detiene el intervalo al completar el texto
+      }
+    }, 300);
+  </script>
+  <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1407951835465121912/1414704953884147763/mituas-modified.png?ex=68c08a28&is=68bf38a8&hm=c0f713b37a8fe9e578e2a9540e3e1e28868eb69079363b80f144e640976e175f&=&format=webp&quality=lossless">
+
   <style>
     nav a.inicio-btn {
   text-decoration: none;
@@ -26,24 +40,97 @@ nav a.inicio-btn:hover {
       color: #e5e5e5;
     }
     header {
-      background: rgba(15,15,20,0.9);
+      background: #0D0D10;
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top:0;
+      z-index:1000;
       padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display:flex;
+      justify-content:flex-start;
+      align-items:center;
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .logo {
-      font-weight: 700;
-      font-size: 22px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-weight:700;
+      font-size:22px;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      white-space: nowrap;
     }
-    .logo-img {
-      width: 28px; height: 28px; border-radius: 6px;
+    .logo-img{
+      width:28px; height:28px; border-radius:6px; object-fit:cover;
     }
+nav {
+  display: flex;
+  gap: 30px;
+  margin-left: 40px; /* 👈 Pegarlo más a la izquierda */
+}
+
+nav a {
+  font-size: 13px;         /* 👈 Más grande */
+  font-weight: bold;
+  color: #fafafa;
+  padding: 10px 16px;      /* 👈 Un poco más de padding */
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  padding-bottom: 4px; 
+}
+
+nav a:hover {
+  background-color: #2a2a38;
+  color: #fff;
+  text-decoration: none;    /* Quita subrayado al pasar el mouse */
+  border-bottom: none;      /* Quita borde */
+  box-shadow: none;         /* Quita sombra 15px*/ 
+  font-weight: bold;
+}
+.auth {
+  display: flex;
+  gap: 15px;
+  margin-left: auto; /* ✅ Empuja el bloque a la derecha */
+}
+
+.auth a {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.3s;
+  text-decoration: none; /* 👈 Quita la raya debajo del texto */
+}
+
+.auth .btn-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espacio entre icono y texto */
+  border: 1px solid #1e1e22;
+  color: white;
+}
+
+.auth .btn-outline img.discord-icon {
+  width: 21px;
+  height: 21px;
+}
+
+.auth .btn-outline:hover {
+  background: #D48EF3;
+  color: white;
+}
+
+.auth .btn-primary {
+  background: #D48EF3;
+  color: white;
+  box-shadow: 0 0 10px #D48EF3;
+}
+
+.auth .btn-primary:hover {
+  transform: scale(1.05);
+  background: #6370FF;
+}
     .commands-container {
       display: flex;
       max-width: 1200px;
@@ -108,17 +195,229 @@ nav a.inicio-btn:hover {
     .hidden {
       display: none;
     }
+    .premium-button {
+  background: linear-gradient(90deg, #8439fc, #f1b0d6);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 0 12px #ff6ec470;
+  transition: all 0.3s ease;
+  margin-right: 7px;
+}
+
+.premium-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px #ff6ec4aa;
+}
+footer {
+      text-align:center;
+      padding:25px;
+      font-size:14px;
+      color:#777;
+      border-top:1px solid #222;
+    }
+    .logo {
+  text-decoration: none;
+  color: #fff;
+}
+.logo:hover {
+  opacity: 0.85;
+}
+footer.footer {
+  background-color: #0d0d10;
+  padding: 40px 60px 20px;
+  font-family: 'Inter', sans-serif;
+  color: #aaa;
+  border-top: 1px solid #222;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 150px;
+}
+
+.footer-logo {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: #aaa;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: #fff;
+}
+
+.footer-col span {
+  font-weight: bold;
+  color: #9fe3ff;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: 0.2s ease;
+}
+
+.social-icons img:hover {
+  filter: none;
+  opacity: 1;
+}
+
+.footer-col .copyright {
+  font-size: 13px;
+  color: #777;
+  margin-top: auto;
+}
+.footer-col.follow-us {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-width: 150px;
+}
+
+.footer-col.follow-us span {
+  font-weight: bold;
+  color: #aaa; /* Color corregido */
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+footer.footer {
+  background-color: #0d0d10;
+  padding: 40px 60px 20px;
+  font-family: 'Inter', sans-serif;
+  color: #aaa;
+  border-top: 1px solid #222;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 150px;
+}
+
+.footer-logo {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: #aaa;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: #fff;
+}
+
+.footer-col span {
+  font-weight: bold;
+  color: #9fe3ff;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: 0.2s ease;
+}
+
+.social-icons img:hover {
+  filter: none;
+  opacity: 1;
+}
+
+.footer-col .copyright {
+  font-size: 13px;
+  color: #777;
+  margin-top: auto;
+}
+.footer-col.follow-us {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-width: 150px;
+}
+
+.footer-col.follow-us span {
+  font-weight: bold;
+  color: #aaa; /* Color corregido */
+  margin-bottom: 5px;
+  font-size: 14px;
+}
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="https://images-ext-1.discordapp.net/external/xaZX4GsvSgN1rmTXxlgKiSPx7JrIO3qSBzZ2PeABy0c/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/1407896900874801233/89b86d4e5ec02d115a45f702a5104d3d.png?format=webp&quality=lossless&width=586&height=586" class="logo-img" alt="Brutus">
+    <a href="index.html" class="logo">
+      <img src="https://images-ext-1.discordapp.net/external/D7m5065Qx1S88VdZUK9dUu9aTZ1dDpfhdy3OCDjwYMk/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/1407896900874801233/b908b4c86d2844f0586eb0b6b954c097.png?format=webp&quality=lossless&width=579&height=579" alt="Logo" class="logo-img">
       Mitus
     </div>
     <nav>
-      <a href="index.html" class="inicio-btn">Inicio</a>
+      <a href="comandos.html">Comandos</a>
+      <a href="#">Módulos</a>
+      <a href="#">Soporte</a>
     </nav>
+    <div class="auth">
+      <a href="premium.html" class="premium-button">Premium</a>
+      <a href="#" id="login" class="btn-outline">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" alt="Discord" class="discord-icon">
+        Login
+      </a>
+    </div>
   </header>
 
   <div class="commands-container">
@@ -126,11 +425,18 @@ nav a.inicio-btn:hover {
     <aside class="categories">
       <h3>Categorías</h3>
       <ul id="category-list">
-        <li class="active" data-category="all">Todos (473)</li>
-        <li data-category="animals">Sorteos (3)</li>
-        <li data-category="anime">Anime (35)</li>
-        <li data-category="birthday">Birthday (5)</li>
-        <li data-category="fun">Fun (53)</li>
+        <li class="active" data-category="all">Todos (85)</li>
+        <li data-category="premium">Premium (3)</li>
+        <li data-category="security">Security (2)</li>
+        <li data-category="admin">Admin (8)</li>
+        <li data-category="info">Información (14)</li>
+        <li data-category="mod">Moderación (6)</li>
+        <li data-category="soporte">Soporte (6)</li>
+        <li data-category="eco">Economía (21)</li>
+        <li data-category="marry">Matrimonio (4)</li>
+        <li data-category="hbday">Cumpleaños (4)</li>
+        <li data-category="fun">Diversión (14)</li>
+        <li data-category="gw">Sorteos (3)</li>
       </ul>
     </aside>
 
@@ -142,29 +448,388 @@ nav a.inicio-btn:hover {
       </div>
 
       <!-- Comandos -->
+      <div class="command-item" data-category="premium">
+        <strong>antilink</strong>
+        <p>Activa o desactiva los links externos en tu servidor: mantilink on / mantilink off</p>
+      </div>
+      <div class="command-item" data-category="premium">
+        <strong>autoreact</strong>
+        <p>Agrega palabras para añadir reacciones: mautoreact add (palabra) (emoji1) (emoji2)</p>
+        <p>> Elimina las palabras: mautoreact remove (palabra)</p>
+        <p>> Mira la lista de palabras registradas: mautoreact list</p>
+      </div>
+
+
+
+      <div class="command-item" data-category="security">
+        <strong>antiflood</strong>
+        <p>Activa o desactiva el sistema antiflood: mantiflood</p>
+      </div>
+      <div class="command-item" data-category="security">
+        <strong>antiword</strong>
+        <p>Activa o desactiva el sistema antiword: mantiword</p>
+        <p>> Agrega una palabra prohibida a la lista: mantiword add (palabra)</p>
+        <p>> Elimina una palabra prohibida de la lista: mantiword remove (palabra)</p>
+        <p>> Mira la lista de palabras prohibidas: mantiword list</p>
+      </div>
+
+
+
+      <div class="command-item" data-category="admin">
+        <strong>addemoji</strong>
+        <p>Agrega emojis de otros servidores en el tuyo: maddemoji (emoji nitro) (emoji normal)</p>
+      </div>
+      <div class="command-item" data-category="admin">
+        <strong>purge</strong>
+        <p>Remueve mensajes puestos por usuarios/general/palabra</p>
+        <p>> Elimina mensajes de usuarios: mpurge (usuario) (cantidad)</p>
+        <p>> Elimina mensajes en general: mpurge (cantidad)</p>
+        <p>> Elimina mensajes que contengan esa palabra: mpurge (palabra) (cantidad)</p>
+      </div>
+      <div class="command-item" data-category="admin">
+        <strong>addrole</strong>
+        <p>Agrégale un rol a un usuario: maddrole (usuario) (rol)</p>
+      </div>
+      <div class="command-item" data-category="admin">
+        <strong>removerole</strong>
+        <p>Elimina un rol a un usuario: mremoverole (usuario) (rol)</p>
+      </div>
+      <div class="command-item" data-category="admin">
+        <strong>enable</strong>
+        <p>Habilita un comando mío para que funcione en tu servidor (si en algún caso lo desactivaste)</p>
+      </div>
+      <div class="command-item" data-category="admin">
+        <strong>disable</strong>
+        <p>Deshabilita un comando mío para que no funcione en tu servidor</p>
+      </div>
+      <div class="command-item" data-category="admin">
+        <strong>setprefix</strong>
+        <p>Cambia el prefijo del servidor por uno nuevo: msetprefix (nuevo prefix)</p>
+        <p>> Prefijo por defecto: m</p>
+      </div>
+      <div class="command-item" data-category="admin">
+        <strong>setsuggest</strong>
+        <p>Selecciona el canal donde irán las sugerencias y el canal donde podrá usarse el comando: msetsuggest</p>
+        <p>> setsuggest canal #comandos</p>
+        <p>> setsuggest enviar #sugerencias</p>
+      </div>
+
+
+
+      <div class="command-item" data-category="info">
+        <strong>instagram [ig]</strong>
+        <p>Te muestra una información básica del usuario en instagram: mig (usuario de instagram)</p>
+      </div>
+      <div class="command-item" data-category="info">
+        <strong>invite</strong>
+        <p>Invítame a tu servidor para mejorar tu experiencia: minvite</p>
+      </div>
+      <div class="command-item" data-category="info">
+        <strong>ping</strong>
+        <p>Mira mi latencia en ese servidor: mping</p>
+      </div>
+      <div class="command-item" data-category="info">
+        <strong>profile</strong>
+        <p>Mira el perfil personalizado de un usuario o propio</p>
+        <p>> Propio: mprofile</p>
+        <p>> Otro usuario: mprofile (usuario)</p>
+      </div>
+      <div class="command-item" data-category="info">
+        <strong>replist</strong>
+        <p>Manténte al tanto del TOP GLOBAL de reputación en el bot: mreplist</p>
+      </div>
+      <div class="command-item" data-category="info">
+        <strong>roles</strong>
+        <p>Mira todos los roles en ese servidor: mroles</p>
+      </div>
+      <div class="command-item" data-category="info">
+        <strong>servericon</strong>
+        <p>Mira el ícono de ese servidor donde ejecutaste el comando: mservericon</p>
+      </div>
+      <div class="command-item" data-category="info">
+        <strong>setstatus</strong>
+        <p>Cambia el estado de tu perfil: msetstatus (estado)</p>
+      </div>
+      <div class="command-item" data-category="info">
+        <strong>userbanner</strong>
+        <p>Mira el banner del usuario mencionado o propio: muserbanner</p>
+        <p>> Propio: muserbanner</p>
+        <p>> Mencionar: muserbanner (usuario)</p>
+      </div>
+      <div class="command-item" data-category="info">
+        <strong>userinfo</strong>
+        <p>Mira la información del usuario mencionado o propio: muserinfo</p>
+        <p>> Propio: muserinfo</p>
+        <p>> Mencionar: muserinfo (usuario)</p>
+      </div>
+      <div class="command-item" data-category="info">
+        <strong>leaderboard [top]</strong>
+        <p>Mira quién es el usuario con más nivel en el bot: mtop</p>
+      </div>
+      <div class="command-item" data-category="info">
+        <strong>level</strong>
+        <p>Mira tu propio XP en el bot: mlevel</p>
+      </div>
+      <div class="command-item" data-category="info">
+        <strong>etop</strong>
+        <p>Mira el usuario que más dinero tiene en economía: metop</p>
+      </div>
+      <div class="command-item" data-category="info">
+        <strong>avatar</strong>
+        <p>Mira el avatar del usuario mencionado o propio: mavatar</p>
+        <p>> Propio: mavatar</p>
+        <p>> Mencionado: mavatar (usuario)</p>
+      </div>
+
+
+
+      <div class="command-item" data-category="mod">
+        <strong>ban</strong>
+        <p>Banea a un usuario de tu servidor: mban (usuario/ID) (razón) [opcional]</p>
+      </div>
+      <div class="command-item" data-category="mod">
+        <strong>kick</strong>
+        <p>Expulsa a un usuario de tu servidor: mkick (usuario) (razón) [opcional]</p>
+      </div>
+      <div class="command-item" data-category="mod">
+        <strong>muted-role</strong>
+        <p>Selecciona el rol que se asignará a los usuarios muteados o crea uno: mmuted-role</p>
+      </div>
+      <div class="command-item" data-category="mod">
+        <strong>mute</strong>
+        <p>Silencia a un usuario de tu servidor: mmute (usuario) (razón) [opcional]</p>
+      </div>
+      <div class="command-item" data-category="mod">
+        <strong>unmute</strong>
+        <p>Quítale el silencio a un usuario de tu servidor: munmute (usuario)</p>
+      </div>
+      <div class="command-item" data-category="mod">
+        <strong>unban</strong>
+        <p>Desbanea a un usuario de tu servidor: munban (usuario)</p>
+      </div>
+
+
+      <div class="command-item" data-category="soporte">
+        <strong>setcategory</strong>
+        <p>Selecciona la categoría donde irán todos los tickets abiertos: msetcategory (ID de la categoría)</p>
+      </div>
+      <div class="command-item" data-category="soporte">
+        <strong>setstaffrole</strong>
+        <p>Selecciona el rol que atenderá todos los tickets abiertos: msetstaffrole (Rol staff)</p>
+      </div>
+      <div class="command-item" data-category="soporte">
+        <strong>ticketpanel</strong>
+        <p>Crea el panel de tickets con opciones: mticketpanel</p>
+      </div>
+      <div class="command-item" data-category="soporte">
+        <strong>reportbug</strong>
+        <p>Reporta si estoy haciendo algo mal: mreportbug (Reporte)</p>
+      </div>
+      <div class="command-item" data-category="soporte">
+        <strong>suggest</strong>
+        <p>Sugiere comandos o algo que quieras añadir: msuggest (Sugerencia)</p>
+      </div>
+
+
+      
+      <div class="command-item" data-category="eco">
+        <strong>bal</strong>
+        <p>Mira tu dinero en cartera o guardado en el banco: mbal</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>buy</strong>
+        <p>Compra un ítem de la tienda: mbuy (ítem)</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>chop</strong>
+        <p>Ponte a talar madera para conseguir objetos: mchop</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>coinflip</strong>
+        <p>Lanza una moneda apostando y prueba tu suerte: mcoinflip cara/cruz (monto)</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>craft</strong>
+        <p>Craftea algo del inventario o tienda: mcraft (objeto)</p>  
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>crime</strong>
+        <p>Comete un crimen.. Ojo que no siempre saldrás ganando: mcrime</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>dep</strong>
+        <p>Deposita tu dinero en el banco: mdep (monto)</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>duel</strong>
+        <p>Reta a un usuario a un duelo de espadas: mduel (usuario)</p> bag mine pay beg
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>fish</strong>
+        <p>Ponte a pescar y prueba tu suerte: mfish</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>bag</strong>
+        <p>Mira lo que tienes en tu mochila: mbag</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>mine</strong>
+        <p>Mina para conseguir algo interesanate: mmine</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>pay</strong>
+        <p>Págale a un usuario un monto de dinero: mpay (usuario) (monto)</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>beg</strong>
+        <p>Si te quedaste sin dinero, puedes pedir algo de limosna: mbeg</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>rob</strong>
+        <p>Intenta robar y logra sacar un poco de monedas: mrob</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>roulette</strong>
+        <p>Prueba tu suerte jugando a la ruleta: mroulette rojo/negro</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>sell</strong>
+        <p>Entrega o regala items a un usuario: msell (usuario)</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>shop</strong>
+        <p>Observa la tienda, compra items y equípate: mshop</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>stats</strong>
+        <p>Mira tus stats o las de otro usuario para luchar: mstats</p>
+        <p>> Propio: mstats</p>
+        <p>> Usuario: mstats (usuario)</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>use</strong>
+        <p>Usa el objeto y conviértelo en algo real: muse (objeto)</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>withdraw</strong>
+        <p>Retira dinero guardado en el banco: mwithdraw (monto)</p>
+      </div>
+      <div class="command-item" data-category="eco">
+        <strong>work</strong>
+        <p>Trabaja honradamente para conseguir monedas</p>
+      </div>
+
+
+      
+      <div class="command-item" data-category="marry">
+        <strong>marry</strong>
+        <p>Proponle matrimonio a la persona con la que quieras estar: mmarry (usuario)</p>
+      </div>
+      <div class="command-item" data-category="marry">
+        <strong>accept</strong>
+        <p>Acepta la propuesta de matrimonio: maccept (usuario)</p>
+      </div>
+      <div class="command-item" data-category="marry">
+        <strong>decline</strong>
+        <p>Rechaza la propuesta de matrimonio: mdecline (usuario)</p>
+      </div>
+      <div class="command-item" data-category="marry">
+        <strong>divorce</strong>
+        <p>Divórciate si te cansaste de tu pareja: mdivorce (usuario)</p>
+      </div>
+
+
+
+      <div class="command-item" data-category="hbday">
+        <strong>bday</strong>
+        <p>Agrega un cumpleaños a tu perfil: mbday 06/12</p>
+      </div>
+      <div class="command-item" data-category="hbday">
+        <strong>delbday</strong>
+        <p>Elimina un cumpleaños de tu perfil: mdelbday</p>
+      </div>
+      <div class="command-item" data-category="hbday">
+        <strong>mybday</strong>
+        <p>Mira el cumpleaños que registraste: mmybday</p>
+      </div>
+      <div class="command-item" data-category="hbday">
+        <strong>nextbday</strong>
+        <p>Mira de quién se acerca el cumpleaños más reciente: nextbday</p>
+      </div>
+
+
+
       <div class="command-item" data-category="fun">
         <strong>8ball</strong>
-        <p>Pregunta a la bola mágica de Neko</p>
+        <p>Pregunta a Mitus para que te responda: m8ball (pregunta)</p>
       </div>
-      <div class="command-item" data-category="animals">
+      <div class="command-item" data-category="fun">
+        <strong>afk</strong>
+        <p>Entra en modo ausente en el servidor: mafk (razón) [opcional]</p>
+      </div>
+      <div class="command-item" data-category="fun">
+        <strong>cry</strong>
+        <p>Ponte a llorar delante de todos y busca consuelos: mcry</p>
+      </div>
+      <div class="command-item" data-category="fun">
+        <strong>hug</strong>
+        <p>Abraza a un usuario sin preguntarselo: mhug (usuario)</p>
+      </div>
+      <div class="command-item" data-category="fun">
+        <strong>kiss</strong>
+        <p>Dale un beso a un usuario: mkiss (usuario)</p>
+      </div>
+      <div class="command-item" data-category="fun">
+        <strong>pat</strong>
+        <p>Acaricia a un usuario: mpat (usuario)</p>
+      </div>
+      <div class="command-item" data-category="fun">
+        <strong>remindme</strong>
+        <p>Pídeme que te recuerde algo: mremindme (minutos) (texto)</p>
+      </div>
+      <div class="command-item" data-category="fun">
+        <strong>kiss</strong>
+        <p>Dale un beso a un usuario: mkiss (usuario)</p>
+      </div>
+      <div class="command-item" data-category="fun">
+        <strong>rep</strong>
+        <p>Entrégale reputación diaria a un usuario: mrep (usuario)</p>
+      </div>
+      <div class="command-item" data-category="fun">
+        <strong>seen</strong>
+        <p>Este comando te dirá cuando un usuario fue visto por última vez: mseen (usuario)</p>
+      </div>
+      <div class="command-item" data-category="fun">
+        <strong>slap</strong>
+        <p>Dale una cachetada a un usuario: mslap (usuario)</p>
+      </div>
+      <div class="command-item" data-category="fun">
+        <strong>smile</strong>
+        <p>Ríele coquetamente a un usuario: msmile</p>
+      </div>
+      <div class="command-item" data-category="fun">
+        <strong>snipe</strong>
+        <p>Podrás ver el ultimo mensaje eliminado en el canal específico: msnipe</p>
+      </div>
+      <div class="command-item" data-category="fun">
+        <strong>tictactoe</strong>
+        <p>Juega tres en raya con usuarios y rétalos: mtictactoe (usuario)</p>
+      </div>
+
+
+
+
+      <div class="command-item" data-category="gw">
         <strong>gstart</strong>
-        <p>Crea un sorteo a tu modo: bgstart 1h 1 Nitro Classic</p>
+        <p>Crea un sorteo a tu modo: mgstart 1h 1 Nitro Classic</p>
       </div>
-      <div class="command-item" data-category="animals">
+      <div class="command-item" data-category="gw">
         <strong>greroll</strong>
-        <p>¿No reclamaron a tiempo? Utiliza reroll para ver otro ganador: bgreroll (ID) </p>
+        <p>¿No reclamaron a tiempo? Utiliza reroll para ver otro ganador: mgreroll (ID) </p>
       </div>
-      <div class="command-item" data-category="animals">
+      <div class="command-item" data-category="gw">
         <strong>gend</strong>
-        <p>¿Quieres acabar un sorteo antes de su tiempo? Usa bgend (ID) </p>
-      </div>
-      <div class="command-item" data-category="anime">
-        <strong>act banghead</strong>
-        <p>Golpea tu cabeza con frustración (versión anime)</p>
-      </div>
-      <div class="command-item" data-category="birthday">
-        <strong>birthday cake</strong>
-        <p>Envía una tarta virtual de cumpleaños</p>
+        <p>¿Quieres acabar un sorteo antes de su tiempo? Usa mgend (ID) </p>
       </div>
     </section>
   </div>
@@ -211,5 +876,38 @@ nav a.inicio-btn:hover {
       filterCommands();
     });
   </script>
+
+<footer class="footer">
+  <div class="footer-content">
+    <!-- Columna 1: Logo -->
+    <div class="footer-col">
+      <img src="https://media.discordapp.net/attachments/1407951835465121912/1414854777040408668/mituas-modified.png?ex=68c115b1&is=68bfc431&hm=b64eae928367cee97eaad93521eac123765f0fe81ef1fb964de0690df263dcde&=&format=webp&quality=lossless" alt="Mitus Logo" class="footer-logo">
+      <p class="copyright">© 2025 Mitus</p>
+    </div>
+
+    <!-- Columna 2 -->
+    <div class="footer-col">
+      <a href="comandos.html">Comandos</a>
+      <a href="#">Módulos</a>
+      <a href="#">Soporte</a>
+    </div>
+
+    <!-- Columna 3 -->
+    <div class="footer-col">
+      <a href="premium.html">Súmate</a>
+      <a href="#">Términos y Condiciones</a>
+      <a href="#">Privacidad</a>
+    </div>
+
+    <!-- Columna 4: Redes -->
+    <div class="footer-col follow-us">
+      <span>Síguenos</span>
+      <div class="social-icons">
+        <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" alt="Discord"></a>
+        <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/twitter--v1.png" alt="Twitter"></a>
+      </div>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
